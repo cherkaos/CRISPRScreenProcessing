@@ -16,7 +16,7 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,result_file,maxsgRN
 
   if(!file.exists(inputfile)) stop('No such file "', inputfile,'"')
 
-  data=read.csv(inputfile,sep = "\t", check.name=FALSE)
+  data=read.csv(inputfile,sep = ",", check.name=FALSE)
   if(zscore==TRUE){
     for(id in 3:length(data)){
       data[,id]=scale(data[,id],center=TRUE,scale=TRUE)[,1]
@@ -38,7 +38,7 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,result_file,maxsgRN
     foldchange=c()
     x=data[,id];
     xsorted <- data[order(x,decreasing = TRUE),c(1,2,id)]
-    xsorted0=xsorted
+    xsorted0=xsorted;
     #xsorted0=xsorted[xsorted[,3] != 0, ]
 
 
@@ -105,6 +105,6 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,result_file,maxsgRN
 
   # print file adding
   #newFile=sub(".txt","_Processed.txt",inputfile)
-  write.table(output,result_file, sep="\t",row.names = FALSE,na = " ")
+  write.csv(output,result_file, row.names = FALSE,na = " ",quote=F)
 }
 
