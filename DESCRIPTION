@@ -1,12 +1,12 @@
 Package: CRISPRScreenProcessing
-Title: What the Package Does (One Line, Title Case)
-Version: 0.1
+Title: Processing function to identify gRNA in CRISPR organoid screen.
+Version: 1.0
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
+    person(given = "Sarah",
+           family = "Cherkaoui",
+           role = c("aut"),
+           email = "cherkaos@gmail.com")
+Description: 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

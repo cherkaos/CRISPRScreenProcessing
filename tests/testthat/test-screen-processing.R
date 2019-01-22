@@ -18,6 +18,7 @@ test_that("Basic test", {
    # TODO: load result file, check dimensions
    #      compute some stats on columns
    #      use: expect_equal(a, b, tolerance)
+   #      Implement Coverage  https://github.com/r-lib/covr
 
    # modify input file to have some strange column names (spaces in it  or starting with numbers),
    #   use such names also for controlEnd, ...

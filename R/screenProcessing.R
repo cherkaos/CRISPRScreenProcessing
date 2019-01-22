@@ -1,18 +1,18 @@
 #' Title
 #'
-#' @param inputfile ..
+#' @param inputfile csv file (comma separated) where each column represent a clones and and each row.
 #' @param controlStart ..
 #' @param controlEnd ..
-#' @param result_file ..
+#' @param resultfile ..
 #' @param maxsgRNA ..
 #' @param minReadCount ..
 #' @param zscore ..
 #'
-#' @return result_file
+#' @return resultfile
 #' @export
 #'
 #' @examples
-screenProcessing<-function(inputfile,controlStart,controlEnd,result_file,maxsgRNA,minReadCount,zscore){
+screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA,minReadCount,zscore){
 
   if(!file.exists(inputfile)) stop('No such file "', inputfile,'"')
 
@@ -105,6 +105,6 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,result_file,maxsgRN
 
   # print file adding
   #newFile=sub(".txt","_Processed.txt",inputfile)
-  write.csv(output,result_file, row.names = FALSE,na = " ",quote=F)
+  write.csv(output,resultfile, row.names = FALSE,na = " ",quote=F)
 }
 
