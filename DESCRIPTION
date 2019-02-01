@@ -1,10 +1,9 @@
 Package: CRISPRScreenProcessing
 Title: Processing function to identify gRNA in CRISPR organoid screen.
 Version: 1.0
-Authors@R: 
-    person(given = "Sarah",
+Authors@R: person(given = "Sarah",
            family = "Cherkaoui",
-           role = c("aut"),
+           role = c("maintainer", "aut", "cre"),
            email = "cherkaos@gmail.com")
 Description: 
 License: MIT + file LICENSE
