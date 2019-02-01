@@ -16,7 +16,7 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
 
   if(!file.exists(inputfile)) stop('No such file "', inputfile,'"')
 
-  data=read.csv(inputfile,sep = ",", check.name=FALSE)
+  data=utils::read.csv(inputfile,sep = "\t", check.name=FALSE)
   if(zscore==TRUE){
     for(id in 3:length(data)){
       data[,id]=scale(data[,id],center=TRUE,scale=TRUE)[,1]
@@ -105,6 +105,6 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
 
   # print file adding
   #newFile=sub(".txt","_Processed.txt",inputfile)
-  write.csv(output,resultfile, row.names = FALSE,na = " ",quote=F)
+  utils::write.csv(output,resultfile, row.names = FALSE,na = " ",quote=F)
 }
 

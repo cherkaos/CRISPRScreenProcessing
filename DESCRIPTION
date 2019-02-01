@@ -3,9 +3,9 @@ Title: Processing function to identify gRNA in CRISPR organoid screen.
 Version: 1.0
 Authors@R: person(given = "Sarah",
            family = "Cherkaoui",
-           role = c("maintainer", "aut", "cre"),
+           role = c("aut", "cre"),
            email = "cherkaos@gmail.com")
-Description: 
+Description: Function to identify gRNA in CRISPR organoid screen using positive controls manually selected. It will return which clones and their gRNA pass the selection.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

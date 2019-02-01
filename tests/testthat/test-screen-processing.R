@@ -2,18 +2,18 @@ context("test-screen-processing")
 
 test_that("Basic test", {
 
-   result_file <- tempfile()
+   resultfile <- tempfile()
    inputfile="APK-1-and-2-final.txt"
    controlStart="sample35"
    controlEnd="sample19-II"
    maxsgRNA=15
    minReadCount=100
    zscore=TRUE
-   screenProcessing(inputfile,controlStart,controlEnd, result_file, 15,100,TRUE)
-   expect_true(file.exists(result_file))
-   output=read.csv(result_file,sep = "\t", check.name=FALSE)
+   screenProcessing(inputfile,controlStart,controlEnd, resultfile, 15,100,TRUE)
+   expect_true(file.exists(resultfile))
+   output=read.csv(resultfile,sep = "\t", check.name=FALSE)
 
-   expect_equal(dim(output),c(865,75),1)
+   expect_equal(dim(output),c(866,74),1)
 
    # TODO: load result file, check dimensions
    #      compute some stats on columns
