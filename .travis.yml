@@ -1,16 +1,7 @@
-language: c
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-before_install:
-  - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
-  - chmod 755 ./travis-tool.sh
-  - ./travis-tool.sh bootstrap
+language: R
+sudo: true
 
-install:
-  - ./travis-tool.sh install_r testthat
-  - ./travis-tool.sh install_r stringr
-
-script:
-  - Rscript -e "library(testthat);invisible(source_dir('./',env=globalenv()));test_dir('tests');test_dir('tests',reporter='stop')"
-
-notifications:
-  email: false
+cache:
+  packages: yes
