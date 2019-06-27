@@ -1,19 +1,22 @@
-#' Title
+#' screenProcessing function
 #'
-#' @param inputfile csv file (comma separated) where each column represent a clones and and each row.
+#' @param inputfile csv or txt file (comma separated) where each column represent a clones and and each row.
 #' @param controlStart ..
 #' @param controlEnd ..
 #' @param resultfile ..
 #' @param maxsgRNA ..
 #' @param minReadCount ..
 #' @param zscore ..
+#' @param orderOutput 
+#' @param shortdOutput 
 #'
 #' @return resultfile
-#' @export
+#' @export screenProcessing
 #'
 #' @examples
-screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA,minReadCount,zscore){
+screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA,minReadCount,zscore,orderOutput=TRUE,shortdOutput=TRUE){
   
+  options(warn=-1)
   if(!file.exists(inputfile)) stop('No such file "', inputfile,'"')
   
   data=utils::read.csv(inputfile,sep = "\t", check.name=FALSE)
@@ -32,9 +35,9 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
   if(is.na(controlStartPos)) stop('The sample"', controlStart,'" is not part of samples "', names(data),'"')
   if(is.na(controlEndPos)) stop('The sample"', controlEndPos,'" is not part of samples "', names(data),'"')
   
-  
   ALLfoldchange=c()
   output=data.frame()
+  keepOrder=c()
   for(id in controlStartPos:controlEndPos){
     foldchange=c()
     x=data[,id];
@@ -49,7 +52,17 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
     }
     ALLfoldchange=c(ALLfoldchange,max(foldchange))
     posFC=match(max(foldchange),foldchange)
-    Newsorted=rbind(xsorted0[1:posFC,],Separation=c("-","-","-"),xsorted0[(posFC+1):(dim(xsorted0)[1]),])
+    
+    if(!shortdOutput){
+      Newsorted=rbind(xsorted0[1:posFC,],Separation=c("-","-","-"),xsorted0[(posFC+1):(dim(xsorted0)[1]),])
+      keepOrder=c(keepOrder,posFC)
+    }
+    else{
+      xsorted0[(posFC+1):(dim(xsorted0)[1]),] <- " "
+      Newsorted=xsorted0
+      keepOrder=c(keepOrder,posFC)
+    }
+    
     
     #output=c(output,Newsorted)
     if(nrow(output)==0){
@@ -59,17 +72,29 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
       output=cbind(output,Newsorted)
     }
   }
+  # To order clone depending on the number of sgRNA they have
+  if(orderOutput){
+    output=output[,(rep(order(keepOrder),each=3)*3)+rep(0:2,length(keepOrder))-2]
+    
+    # Since order has changed, add a space to delimitate control clone
+    emptycolumn=data.frame(matrix(ncol=1,nrow=nrow(output)))
+    colnames(emptycolumn)="New Clones" 
+    output=cbind(output,emptycolumn)
+    
+  }
   
-  print('Hi Till, here are the FC calculated for your control clones :')
+  print('Max fold change of control clones :')
   print(ALLfoldchange)
-  print('For the other clones, I will use the smalest FC as a threshold  :')
+  print('The smalest fold change that will be used as threshold  :')
   print(min(ALLfoldchange))
   print('Which is control clone :')
   print(names(data)[match(min(ALLfoldchange),ALLfoldchange)+2])
   
   refFoldchange=min(ALLfoldchange)
-  clonesToRemove=c()
+  
   position=controlEndPos+1;
+  keepOrder=c()
+  outputNewClones=data.frame()
   for(i in position:length(data)){
     foldchange=c()
     x=data[,i]
@@ -77,36 +102,43 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
     xsortedNotZscore=dataNotZscored[order(x,decreasing = TRUE),c(1,2,i)]
     if(!xsorted[1,3]==0){
       xsorted0=xsorted[xsorted[,3] != 0, ]
-      #To find sudden drop
+      
+      # To find sudden drop 
       for(j in 1:maxsgRNA)
       {
         foldchange=c(foldchange,xsorted0[j,3]/xsorted0[j+1,3])
       }
-
+      
       posFC=match(max(foldchange),foldchange)
       if(max(foldchange)>refFoldchange && xsortedNotZscore[posFC,3]>minReadCount){
         
-        Newsorted=rbind(xsorted0[1:posFC,],Separation=c("-","-","-"),xsorted0[(posFC+1):(dim(xsorted0)[1]),])
-        
-        #output=c(output,Newsorted)
-        if(nrow(output)==0){
-          output=Newsorted
+        if(!shortdOutput){
+          Newsorted=rbind(xsorted0[1:posFC,],Separation=c("-","-","-"),xsorted0[(posFC+1):(dim(xsorted0)[1]),])
+          keepOrder=c(keepOrder,posFC)
         }
         else{
-          output=cbind(output,Newsorted)
+          xsorted0[(posFC+1):(dim(xsorted0)[1]),] <- " "
+          Newsorted=xsorted0
+          keepOrder=c(keepOrder,posFC)
         }
         
+        if(nrow(outputNewClones)==0){
+          outputNewClones=Newsorted
+        }
+        else{
+          outputNewClones=cbind(outputNewClones,Newsorted)
+        }
       }
-      else {
-        clonesToRemove=c(clonesToRemove,names(data)[i])
-      }
-    }
-    else {
-      clonesToRemove=c(clonesToRemove,names(data)[i])
     }
   }
   
-  # print file adding
-  #newFile=sub(".txt","_Processed.txt",inputfile)
+  # To order clone depending on the number of sgRNA they have
+  if(orderOutput){
+    outputNewClones=outputNewClones[,(rep(order(keepOrder),each=3)*3)+rep(0:2,length(keepOrder))-2]
+  }
+  
+  output=cbind(output,outputNewClones)
+
   utils::write.csv(output,resultfile, row.names = FALSE,na = " ",quote=F)
 }
+
