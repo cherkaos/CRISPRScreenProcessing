@@ -8,13 +8,13 @@
 #' @param minReadCount ..
 #' @param zscore ..
 #' @param orderOutput 
-#' @param shortdOutput 
+#' @param shortOutput 
 #'
 #' @return resultfile
 #' @export screenProcessing
 #'
 #' @examples
-screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA,minReadCount,zscore,orderOutput=TRUE,shortdOutput=TRUE){
+screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA,minReadCount,zscore,orderOutput=TRUE,shortOutput=TRUE){
   
   options(warn=-1)
   if(!file.exists(inputfile)) stop('No such file "', inputfile,'"')
@@ -53,7 +53,7 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
     ALLfoldchange=c(ALLfoldchange,max(foldchange))
     posFC=match(max(foldchange),foldchange)
     
-    if(!shortdOutput){
+    if(!shortOutput){
       Newsorted=rbind(xsorted0[1:posFC,],Separation=c("-","-","-"),xsorted0[(posFC+1):(dim(xsorted0)[1]),])
       keepOrder=c(keepOrder,posFC)
     }
@@ -112,7 +112,7 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
       posFC=match(max(foldchange),foldchange)
       if(max(foldchange)>refFoldchange && xsortedNotZscore[posFC,3]>minReadCount){
         
-        if(!shortdOutput){
+        if(!shortOutput){
           Newsorted=rbind(xsorted0[1:posFC,],Separation=c("-","-","-"),xsorted0[(posFC+1):(dim(xsorted0)[1]),])
           keepOrder=c(keepOrder,posFC)
         }
