@@ -4,13 +4,13 @@
 \alias{screenProcessing}
 \title{Title}
 \usage{
-screenProcessing(inputfile, controlStart, controlEnd, resultfile, maxsgRNA,
-  minReadCount, zscore)
+screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA,minReadCount,zscore,orderOutput=TRUE,shortOutput=TRUE){
+  
 }
 \arguments{
-\item{inputfile}{csv file (comma separated) where each column represent a clones and and each row.}
+\item{inputfile}{Input file where each column represent a clone and each row a sgRNA. The first  Has to be a csv file (comma separated)}
 
-\item{controlStart}{..}
+\item{controlStart}{The colname of the first }
 
 \item{controlEnd}{..}
 
@@ -21,6 +21,10 @@ screenProcessing(inputfile, controlStart, controlEnd, resultfile, maxsgRNA,
 \item{minReadCount}{..}
 
 \item{zscore}{..}
+
+\item{orderOutput}{..}
+
+\item{shortOutput}{..}
 }
 \value{
 resultfile
