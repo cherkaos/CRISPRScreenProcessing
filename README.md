@@ -1,6 +1,5 @@
 # CRISPRScreenProcessing
 Function to identify novel sgRNAs in CRISPR organoid screen.
-
 This function has been developed for the analysis the screen of the following study: 
 
 Title: Genome-scale CRISPR screening in organoids identifies synergistic tumor-suppressor activities that lead to TGFß resistance.
