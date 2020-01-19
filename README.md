@@ -20,7 +20,7 @@ Because of the nature of our CRISPR screening approach, in which we do not compa
 
 Processing function steps:
 
-0. Pre-step. Manual identification of positive control organoid clones with high read counts for sgRNAs targeting known positive regulators. In the TGFß screens, the positive regulators were APC, AXIN, TGFBR1/2
+0. Pre-step. Manual identification of positive control organoid clones with high read counts for sgRNAs targeting known positive regulators.
 1. For all integrations, Z-scores of the reads are calculated to make read count values comparable to each other.
 2. For each control clone, the processing function ranks sgRNAs from high to low and identifies largest drop in read count (fold change) between two consecutive sgRNAs.
 3. The smallest read count drop (fold change) among control clones is selected as minimum threshold for integrated sgRNAs.
