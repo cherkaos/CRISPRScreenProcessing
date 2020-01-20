@@ -5,8 +5,7 @@ sudo: true
 
 cache:
   packages: yes
-  
+
 os:
-  - windows
   - linux
   - osx
