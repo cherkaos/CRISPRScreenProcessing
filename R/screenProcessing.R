@@ -1,15 +1,15 @@
 #' screenProcessing function
 #'
 #' screenProcessing function
-#' @param inputfile csv or txt file (comma separated) where each column represent a clones and and each row.
-#' @param controlStart ..
-#' @param controlEnd ..
-#' @param resultfile ..
-#' @param maxsgRNA ..
-#' @param minReadCount ..
-#' @param zscore ..
-#' @param orderOutput ..
-#' @param shortOutput ..
+#' @param inputfile Input file name. File must contains clones/organoids in the columns and sgRNAs in the rows. First row are the clones/organoids names and the two first column are the sgRNAs name and IDs. Control clones/organoids should be placed at the beginning/left of the file and unknown clones/organoids subsequently. File can be a csv or txt a file (comma separated) located in the working directory.
+#' @param controlStart Name of first control clone/organoid in inputfile. The name should match the column name and should not contain special characters.
+#' @param controlEnd Name of last control clone/organoid in inputfile. The name should match the column name and should not contain special characters.
+#' @param resultfile Output file name.
+#' @param maxsgRNA Maximum number of integrated sgRNAs per clone/organoid.
+#' @param minReadCount Minimum read count to consider a sgRNA.
+#' @param zscore Logical value indicating if the read counts should be zscore for each clones/organoids.
+#' @param orderOutput Logical value indicating if clones should be ordered by the number of integrated sgRNAs in the output file.
+#' @param shortOutput Logical value indicating if all sgRNAs (e.g. the non integrated one) should be included in the output file.
 #'
 #' @return resultfile
 #' @export screenProcessing
@@ -18,6 +18,7 @@
 #' print("Examples")
 screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA,minReadCount,zscore,orderOutput=TRUE,shortOutput=TRUE){
 
+  # CHeck if file exist
   options(warn=-1)
   if(!file.exists(inputfile)) stop('No such file "', inputfile,'"')
 
@@ -34,8 +35,8 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
   controlStartPos=match(controlStart,names(data))
   controlEndPos=match(controlEnd,names(data))
 
-  if(is.na(controlStartPos)) stop('The sample"', controlStart,'" is not part of samples "', names(data),'"')
-  if(is.na(controlEndPos)) stop('The sample"', controlEndPos,'" is not part of samples "', names(data),'"')
+  if(is.na(controlStartPos)) stop('The clone/organoid "', controlStart,'" is not part of"', names(data),'"')
+  if(is.na(controlEndPos)) stop('The clone/organoid "', controlEndPos,'" is not part of "', names(data),'"')
 
   ALLfoldchange=c()
   output=data.frame()
@@ -64,9 +65,6 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
       Newsorted=xsorted0
       keepOrder=c(keepOrder,posFC)
     }
-
-
-    #output=c(output,Newsorted)
     if(nrow(output)==0){
       output=Newsorted
     }
@@ -74,22 +72,21 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
       output=cbind(output,Newsorted)
     }
   }
+
   # To order clone depending on the number of sgRNA they have
   if(orderOutput){
     output=output[,(rep(order(keepOrder),each=3)*3)+rep(0:2,length(keepOrder))-2]
-
     # Since order has changed, add a space to delimitate control clone
     emptycolumn=data.frame(matrix(ncol=1,nrow=nrow(output)))
     colnames(emptycolumn)="New Clones"
     output=cbind(output,emptycolumn)
-
   }
 
   print('Max fold change of control clones :')
   print(ALLfoldchange)
-  print('The smalest fold change that will be used as threshold  :')
+  print('The smallest fold change used as threshold is :')
   print(min(ALLfoldchange))
-  print('Which is control clone :')
+  print('Which is clone :')
   print(names(data)[match(min(ALLfoldchange),ALLfoldchange)+2])
 
   refFoldchange=min(ALLfoldchange)
@@ -134,13 +131,12 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
     }
   }
 
-  # To order clone depending on the number of sgRNA they have
+  # Order clone depending on the number of sgRNA they have
   if(orderOutput){
     outputNewClones=outputNewClones[,(rep(order(keepOrder),each=3)*3)+rep(0:2,length(keepOrder))-2]
   }
 
   output=cbind(output,outputNewClones)
-
   utils::write.csv(output,resultfile, row.names = FALSE,na = " ",quote=F)
 }
 

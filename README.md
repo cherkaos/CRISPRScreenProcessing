@@ -4,7 +4,7 @@ This function has been developed for the analysis the screen of the following st
 
 Title: Genome-scale CRISPR screening in organoids identifies synergistic tumor-suppressor activities that lead to TGFß resistance.
 
-Authors: Till Ringel <sup>1</sup> , Nina Frey <sup>1</sup>, Femke Ringnalda <sup>1</sup>, Sharan Janjuha <sup>1</sup>, Sarah Cherkaoui <sup>2</sup>, Stefan Butz <sup>3</sup>, Sumana Srivatsa <sup>4</sup>, Martin Pirkl <sup>4</sup>, Giancarlo Russo <sup>5</sup>, Lukas Villiger <sup>1</sup>, Gerhard Rogler <sup>6</sup>, Hans Clevers <sup>7.8</sup>, Niko Beerenwinkel <sup>4</sup>, Nicola Zamboni <sup>2</sup>, Tuncay Baubec <sup>3</sup> and Gerald Schwank <sup>1</sup>
+Authors: Till Ringel <sup>1</sup>, Nina Frey <sup>1</sup>, Femke Ringnalda <sup>1</sup>, Sharan Janjuha <sup>1</sup>, Sarah Cherkaoui <sup>2</sup>, Stefan Butz <sup>3</sup>, Sumana Srivatsa <sup>4</sup>, Martin Pirkl <sup>4</sup>, Giancarlo Russo <sup>5</sup>, Lukas Villiger <sup>1</sup>, Gerhard Rogler <sup>6</sup>, Hans Clevers <sup>7.8</sup>, Niko Beerenwinkel <sup>4</sup>, Nicola Zamboni <sup>2</sup>, Tuncay Baubec <sup>3</sup> and Gerald Schwank <sup>1</sup>
 
 1. Institute of Molecular Health Sciences, ETH Zurich, Switzerland.
 2. Institute of Molecular Systems Biology, ETH Zurich, Switzerland.
@@ -40,11 +40,11 @@ library("CRISPRScreenProcessing")
 ```
 # Running the function for the identification of sgRNAs in TGFß screens
 
-Pre-step. Manual identification of positive control organoid clones with high read counts for sgRNAs targeting known positive regulators. In the TGFß screens, the positive regulators were APC, AXIN, TGFBR1/2. An example of such file provided [here](https://github.com/cherkaos/CRISPRScreenProcessing/blob/master/tests/testthat/APK-1-and-2-final.txt).
+Pre-step. Manual identification of positive control organoid clones with high read counts for sgRNAs targeting known positive regulators. In the TGFß screens, the positive regulators were APC, AXIN, TGFBR1/2. An example of such file provided [here](https://github.com/cherkaos/CRISPRScreenProcessing/blob/master/tests/testthat/APK-1-and-2-final.txt). Download the file locally as a txt file (comma-separated).
 
 ```
 # Running CRISPRScreenProcessing
-
+   
    inputfile="APK-1-and-2-final.txt"
    controlStart="sample35" 
    controlEnd="sample19-II"
@@ -55,3 +55,4 @@ Pre-step. Manual identification of positive control organoid clones with high re
    screenProcessing(inputfile,controlStart,controlEnd, resultfile, 15,100,TRUE)
 
 ```
+# Output
