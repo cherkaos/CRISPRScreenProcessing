@@ -53,7 +53,7 @@ library("CRISPRScreenProcessing")
 ```
 # Running the function for the identification of sgRNAs in TGFß screens
 
-Pre-step. Manual identification of positive control organoid clones with high read counts for sgRNAs targeting known positive regulators. In the TGFß screens, the positive regulators were APC, AXIN, TGFBR1/2. An example of such file provided [here](https://github.com/cherkaos/CRISPRScreenProcessing/blob/master/tests/testthat/APK-1-and-2-final.txt). The file should be a txt or csv file (comma-separated) in your working directory.
+Pre-step. Manual identification of positive control organoid clones with high read counts for sgRNAs targeting known positive regulators. In the TGFß screens, the positive regulators were APC, AXIN, TGFBR1/2. An example of such file is provided [here](https://github.com/cherkaos/CRISPRScreenProcessing/blob/master/tests/testthat/APK-1-and-2-final.txt). The file should be a txt or csv file (comma-separated) in your working directory.
 
 ```
 # Running CRISPRScreenProcessing
