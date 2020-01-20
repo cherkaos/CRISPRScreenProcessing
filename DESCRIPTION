@@ -5,11 +5,11 @@ Authors@R: person(given = "Sarah",
            family = "Cherkaoui",
            role = c("aut", "cre"),
            email = "cherkaos@gmail.com")
-Description: Function to identify gRNA in CRISPR organoid screen using positive controls manually selected. It will return which clones and their gRNA pass the selection.
+Description: Function to identify sgRNA in CRISPR organoid screen using positive controls manually selected. It will return which clones and their gRNA pass the selection.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

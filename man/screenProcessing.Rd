@@ -2,15 +2,24 @@
 % Please edit documentation in R/screenProcessing.R
 \name{screenProcessing}
 \alias{screenProcessing}
-\title{Title}
+\title{screenProcessing function}
 \usage{
-screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA,minReadCount,zscore,orderOutput=TRUE,shortOutput=TRUE){
-  
+screenProcessing(
+  inputfile,
+  controlStart,
+  controlEnd,
+  resultfile,
+  maxsgRNA,
+  minReadCount,
+  zscore,
+  orderOutput = TRUE,
+  shortOutput = TRUE
+)
 }
 \arguments{
-\item{inputfile}{Input file where each column represent a clone and each row a sgRNA. The first  Has to be a csv file (comma separated)}
+\item{inputfile}{csv or txt file (comma separated) where each column represent a clones and and each row.}
 
-\item{controlStart}{The colname of the first }
+\item{controlStart}{..}
 
 \item{controlEnd}{..}
 
@@ -30,5 +39,8 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
 resultfile
 }
 \description{
-Title
+screenProcessing function
+}
+\examples{
+print("Examples")
 }
