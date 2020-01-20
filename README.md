@@ -72,6 +72,6 @@ Pre-step. Manual identification of positive control organoid clones with high re
 ```
 # Output
 
-The output is a file containing control clones and succesfully select novel clones. Each clones has 3 columns, where you can find on the information of the integrated sgRNAs and its read count. An example of such output can be found [here](https://github.com/cherkaos/CRISPRScreenProcessing/blob/master/tests/testthat/APK-1-and-2-final.txt).
+The output is a file containing control clones and succesfully select novel clones. Each clones has 3 columns, where you can find on the information of the integrated sgRNAs and its read count. An example of such output can be found [here](https://github.com/cherkaos/CRISPRScreenProcessing/blob/master/tests/testthat/APK-1-and-2-final-result.txt).
 
 
