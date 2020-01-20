@@ -11,9 +11,9 @@ test_that("Basic test", {
    zscore=TRUE
    screenProcessing(inputfile,controlStart,controlEnd, resultfile, 15,100,TRUE)
    expect_true(file.exists(resultfile))
-   output=read.csv(resultfile,sep = "\t", check.name=FALSE)
+   output=read.table(resultfile, check.name=FALSE,sep='\t')
 
-   expect_equal(dim(output),c(866,74),1)
+   expect_equal(dim(output),c(865,151),1)
 
    # TODO: load result file, check dimensions
    #      compute some stats on columns
@@ -28,7 +28,7 @@ test_that("Basic test", {
 
 test_that("Errors test", {
   expect_error(screenProcessing("definitively not a file", 0, 0, "out", 15,100,TRUE),"No such file .*")
-  expect_error(screenProcessing('APK-1-and-2-final.txt',"XXX", "XXX", "out", 15,100,TRUE),"The sample.*")
+  expect_error(screenProcessing('APK-1-and-2-final.txt',"XXX", "XXX", "out", 15,100,TRUE),"The clone/organoid .*")
 
 })
 

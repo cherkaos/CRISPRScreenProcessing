@@ -4,16 +4,29 @@ This function has been developed for the analysis the screen of the following st
 
 Title: Genome-scale CRISPR screening in organoids identifies synergistic tumor-suppressor activities that lead to TGFß resistance.
 
-Authors: Till Ringel <sup>1</sup>, Nina Frey <sup>1</sup>, Femke Ringnalda <sup>1</sup>, Sharan Janjuha <sup>1</sup>, Sarah Cherkaoui <sup>2</sup>, Stefan Butz <sup>3</sup>, Sumana Srivatsa <sup>4</sup>, Martin Pirkl <sup>4</sup>, Giancarlo Russo <sup>5</sup>, Lukas Villiger <sup>1</sup>, Gerhard Rogler <sup>6</sup>, Hans Clevers <sup>7.8</sup>, Niko Beerenwinkel <sup>4</sup>, Nicola Zamboni <sup>2</sup>, Tuncay Baubec <sup>3</sup> and Gerald Schwank <sup>1</sup>
+Authors: Till Ringel <sup>1,2</sup>, Nina Frey <sup>1,2</sup>, Femke Ringnalda <sup>1,2</sup>, Sharan Janjuha <sup>1,2</sup>, Sarah Cherkaoui <sup>4</sup>, Stefan Butz <sup>5</sup>, Sumana Srivatsa <sup>6</sup>, Martin Pirkl <sup>6</sup>, Giancarlo Russo <sup>7</sup>, Lukas Villiger <sup>1,2</sup>, Gerhard Rogler <sup>8</sup>, Hans Clevers <sup>3,9</sup>, Niko Beerenwinkel <sup>6</sup>, Nicola Zamboni <sup>4</sup>, Tuncay Baubec <sup>5</sup> and Gerald Schwank <sup>1,2,10,*</sup>
 
-1. Institute of Molecular Health Sciences, ETH Zurich, Switzerland.
-2. Institute of Molecular Systems Biology, ETH Zurich, Switzerland.
-3. Department of Molecular Mechanisms of Disease, University of Zurich, Switzerland.
-4. Department of Biosystems Science and Engineering, ETH Zurich, Switzerland.
-5. Functional Genomics Center Zurich, University of Zurich, ETH Zurich, Switzerland.
-6. Department of Gastroenterology and Hepatology, University Hospital Zurich, Switzerland.
-7. Oncode Institute, Hubrecht Institute, Royal Netherlands Academy of Arts and Sciences and University Medical Center Utrecht, Utrecht, Netherlands.
-8. Princess Máxima Center for Pediatric Oncology, Utrecht, Netherlands.
+<sup>1</sup>Institute of Molecular Health Sciences, ETH Zurich, Switzerland.
+
+<sup>2</sup>Department of Pharmacology and Toxicology, University of Zurich, Switzerland.
+
+<sup>3</sup>University Medical Center (UMC) Utrecht, Utrecht, Netherlands.
+
+<sup>4</sup>Institute of Molecular Systems Biology, ETH Zurich, Switzerland.
+
+<sup>5</sup>Department of Molecular Mechanisms of Disease, University of Zurich, Switzerland.
+
+<sup>6</sup>Department of Biosystems Science and Engineering, ETH Zurich, Switzerland.
+
+<sup>7</sup>Functional Genomics Center Zurich, University of Zurich, ETH Zurich, Switzerland.
+
+<sup>8</sup>Department of Gastroenterology and Hepatology, University Hospital Zurich, Switzerland.
+
+<sup>9</sup>Hubrecht Institute, Royal Netherlands Academy of Arts and Sciences (KNAW), Utrecht, Netherlands
+
+<sup>10</sup>Lead Contact
+
+*Correspondence: [schwank@pharma.uzh.ch](mailto:schwank@pharma.uzh.ch)
 
 # Description
 Because of the nature of our CRISPR screening approach, in which we do not compare treated and non-treated pools, we decided to use the information of abundant positive controls to identify novel functional sgRNAs. We first selected positive control clones with high read counts for sgRNAs targeting known positive regulators. For these control clones, we identified integrated sgRNAs, removed background sgRNAs reads, and applied the learned pattern to analyze integrated sgRNAs in novel clones. 
