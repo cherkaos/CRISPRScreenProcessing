@@ -137,6 +137,6 @@ screenProcessing<-function(inputfile,controlStart,controlEnd,resultfile,maxsgRNA
   }
 
   output=cbind(output,outputNewClones)
-  utils::write.csv(output,resultfile, row.names = FALSE,na = " ",quote=F)
+  utils::write.table(output,resultfile, row.names = FALSE,na = "",quote=F,sep="\t")
 }
 

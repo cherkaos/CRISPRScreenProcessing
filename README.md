@@ -40,19 +40,25 @@ library("CRISPRScreenProcessing")
 ```
 # Running the function for the identification of sgRNAs in TGFß screens
 
-Pre-step. Manual identification of positive control organoid clones with high read counts for sgRNAs targeting known positive regulators. In the TGFß screens, the positive regulators were APC, AXIN, TGFBR1/2. An example of such file provided [here](https://github.com/cherkaos/CRISPRScreenProcessing/blob/master/tests/testthat/APK-1-and-2-final.txt). Download the file locally as a txt file (comma-separated).
+Pre-step. Manual identification of positive control organoid clones with high read counts for sgRNAs targeting known positive regulators. In the TGFß screens, the positive regulators were APC, AXIN, TGFBR1/2. An example of such file provided [here](https://github.com/cherkaos/CRISPRScreenProcessing/blob/master/tests/testthat/APK-1-and-2-final.txt). The file should be a txt or csv file (comma-separated) in your working directory.
 
 ```
 # Running CRISPRScreenProcessing
    
-   inputfile="APK-1-and-2-final.txt"
+   inputfile="APK-1-and-2-final.txt" 
    controlStart="sample35" 
    controlEnd="sample19-II"
    resultfile <- "APK-1-and-2-final-result.txt"
    maxsgRNA=15
    minReadCount=100
    zscore=TRUE
-   screenProcessing(inputfile,controlStart,controlEnd, resultfile, 15,100,TRUE)
+   orderOutput=TRUE
+   shortOutput=TRUE
+   screenProcessing(inputfile,controlStart,controlEnd,resultfile,maxsgRNA,minReadCount,zscore,orderOutput,shortOutput)
 
 ```
 # Output
+
+The output is a file containing control clones and succesfully select novel clones. Each clones has 3 columns, where you can find on the information of the integrated sgRNAs and its read count. An example of such output can be found [here](https://github.com/cherkaos/CRISPRScreenProcessing/blob/master/tests/testthat/APK-1-and-2-final.txt).
+
+
