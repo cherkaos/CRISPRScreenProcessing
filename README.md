@@ -2,7 +2,8 @@
 Function to identify novel sgRNAs in CRISPR organoid screen.
 This function has been developed for the analysis the screen of the following study: 
 
-Title: Genome-scale CRISPR screening in organoids identifies synergistic tumor-suppressor activities that lead to TGFß resistance.
+Title: [Genome-Scale CRISPR Screening in Human Intestinal Organoids Identifies Drivers of TGF-β Resistance.
+Cell Stem Cell, 2020](https://www.sciencedirect.com/science/article/pii/S1934590920300606)
 
 Authors: Till Ringel <sup>1,2</sup>, Nina Frey <sup>1,2</sup>, Femke Ringnalda <sup>1,2</sup>, Sharan Janjuha <sup>1,2</sup>, Sarah Cherkaoui <sup>4</sup>, Stefan Butz <sup>5</sup>, Sumana Srivatsa <sup>6</sup>, Martin Pirkl <sup>6</sup>, Giancarlo Russo <sup>7</sup>, Lukas Villiger <sup>1,2</sup>, Gerhard Rogler <sup>8</sup>, Hans Clevers <sup>3,9</sup>, Niko Beerenwinkel <sup>6</sup>, Nicola Zamboni <sup>4</sup>, Tuncay Baubec <sup>5</sup> and Gerald Schwank <sup>1,2,10,*</sup>
 
